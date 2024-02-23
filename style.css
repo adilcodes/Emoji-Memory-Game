@@ -17,7 +17,7 @@ body{
 /* Heading */
 .title{
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-size: 40px;
     margin-top: 60px;
 }
@@ -32,13 +32,44 @@ body{
     justify-content: center;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
-
 }
 
 /* Single Card */
 .cards-container .single-card{
+    background-color: transparent;
     width: 130px;
     height: 130px;
-    background: #fff;
     border-radius: 10px;
+    perspective: 500px;
+}
+
+/* Single Card Inner */
+.single-card-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 2s cubic-bezier(0.74, 0.27, 0.23, 0.73);
+    transform-style: preserve-3d;
+}
+
+.single-card:hover .single-card-inner{
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Of Card */
+.single-card-front,
+.single-card-back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.single-card-back{
+    transform: rotateY(180deg);
 }
