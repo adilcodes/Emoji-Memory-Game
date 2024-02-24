@@ -41,6 +41,7 @@ body{
     height: 130px;
     border-radius: 10px;
     perspective: 500px;
+    cursor: pointer;
 }
 
 /* Single Card Inner */
@@ -48,11 +49,11 @@ body{
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 2s cubic-bezier(0.74, 0.27, 0.23, 0.73);
+    transition: transform 1.5s cubic-bezier(0.74, 0.27, 0.23, 0.73);
     transform-style: preserve-3d;
 }
 
-.single-card:hover .single-card-inner{
+.single-card-inner-rotate{
     transform: rotateY(180deg);
 }
 
