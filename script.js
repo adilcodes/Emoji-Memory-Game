@@ -86,6 +86,9 @@ function CardMatchChecker(cardEmoji) {
         });
         ScoreAnimation();
         score++;
+        if(score == 10){
+          GameWon();
+        }
         document.getElementById("score").innerText = score;
         counter = 0;
         rotatedCards = [];
@@ -93,7 +96,7 @@ function CardMatchChecker(cardEmoji) {
     } else {
       setTimeout(() => {
         rotated_cards.forEach((single_card) => {
-          single_card.classList.remove("single-card-inner-rotate");
+          single_card.classList.remove("single-card-inner-rotate", "already-rotated");
         });
         counter = 0;
         rotatedCards = [];
@@ -112,10 +115,19 @@ const ScoreAnimation = () => {
 
 // Game Won
 const GameWon = () => {
-
+  Swal.fire({
+    title: 'Hurrah! You Won',
+    icon: 'success',
+    iconColor: '#008674',
+    confirmButtonText: 'Reset',
+    confirmButtonColor: '#03111B',
+  }).then(GameReset());
 }
 
 // Game Reset
 const GameReset = () => {
-  
+  cards_data = [];
+  cards_container.innerHTML = "";
+  score = 0;
+  FetchingData();
 }
