@@ -7,6 +7,8 @@ let rotatedCards = [];
 // DOM Targetting
 let cards_container = document.querySelector(".cards-container");
 let score_plus_one = document.getElementById("score-plus-one");
+let reset_btn = document.getElementById("reset");
+let scoreTeller = document.getElementById("score");
 
 // Fetch Data Using async/await
 const FetchingData = async () => {
@@ -89,7 +91,7 @@ function CardMatchChecker(cardEmoji) {
         if(score == 10){
           GameWon();
         }
-        document.getElementById("score").innerText = score;
+        scoreTeller.innerText = score;
         counter = 0;
         rotatedCards = [];
       }, 1500);
@@ -129,5 +131,9 @@ const GameReset = () => {
   cards_data = [];
   cards_container.innerHTML = "";
   score = 0;
+  scoreTeller.innerText = score;
   FetchingData();
 }
+
+// Event Listeners
+reset_btn.addEventListener("click", GameReset);
