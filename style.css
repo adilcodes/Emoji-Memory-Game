@@ -81,6 +81,40 @@ body{
     background-color: #ffce84;
 }
 
+/* Score Plus One Aimation */
+#score-plus-one{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFBB55;
+    color: #03111B;
+    font-size: 30px;
+    border-radius: 10px;
+    visibility: hidden;
+}
+.scored-animation{
+    animation: scoreAnimation 1s linear 1 forwards;
+}
+
+@keyframes scoreAnimation {
+    from{
+        visibility: visible;
+        opacity: 1;
+        top: 50%;
+    }
+    to{
+        opacity: 0;
+        top: 30%;
+        visibility: hidden;
+    }
+}
+
 /* Footer */
 .footer{
     position: relative;

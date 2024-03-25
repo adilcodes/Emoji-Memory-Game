@@ -6,6 +6,7 @@ let rotatedCards = [];
 
 // DOM Targetting
 let cards_container = document.querySelector(".cards-container");
+let score_plus_one = document.getElementById("score-plus-one");
 
 // Fetch Data Using async/await
 const FetchingData = async () => {
@@ -83,6 +84,7 @@ function CardMatchChecker(cardEmoji) {
           single_card.classList.add("already-rotated");
           single_card.querySelector(".single-card-front").classList.add("matched-cards");
         });
+        ScoreAnimation();
         score++;
         document.getElementById("score").innerText = score;
         counter = 0;
@@ -98,4 +100,22 @@ function CardMatchChecker(cardEmoji) {
       }, 1500);
     }
   }
+}
+
+// Score Animation
+const ScoreAnimation = () => {
+  score_plus_one.classList.add("scored-animation");
+  setTimeout(() => {
+    score_plus_one.classList.remove("scored-animation");
+  }, 1200)
+}
+
+// Game Won
+const GameWon = () => {
+
+}
+
+// Game Reset
+const GameReset = () => {
+  
 }
