@@ -25,6 +25,7 @@ body{
     letter-spacing: 2px;
     font-size: 40px;
     margin-top: 60px;
+    text-align: center;
 }
 
 /* Score And Reset Button */
@@ -156,3 +157,51 @@ body{
 .footer:hover::after{
     width: 100%;
 } 
+
+
+/* Responsiveness */
+@media (max-width: 920px) {
+    .cards-container .single-card{
+        width: 105px;
+        height: 105px;
+    }
+}
+
+@media (max-width: 725px) {
+    .cards-container{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 586px) {
+    .title{
+        font-size: 36px;
+    }
+    .cards-container .single-card{
+        width: 90px;
+        height: 90px;
+    }
+    .single-card-back h1{
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title{
+        font-size: 32px;
+    }
+    .cards-container{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 13px;
+        padding: 15px;
+    }
+    .cards-container .single-card{
+        width: 85px;
+        height: 85px;
+    }
+    .single-card-back h1{
+        font-size: 23px;
+    }
+}

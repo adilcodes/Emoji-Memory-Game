@@ -137,3 +137,9 @@ const GameReset = () => {
 
 // Event Listeners
 reset_btn.addEventListener("click", GameReset);
+
+
+// Loader
+window.addEventListener("load", () => {
+
+})
