@@ -1,15 +1,39 @@
 // Variables
-let score = 0;
-let cards_data = [];
-let counter = 0;
-let rotatedCards = [];
+let score = 0,
+  cards_data = [],
+  counter = 0,
+  rotatedCards = [],
+  mins = 1,
+  secs = 60,
+  timer;
 
 // DOM Targetting
-let cards_container = document.querySelector(".cards-container");
-let score_plus_one = document.getElementById("score-plus-one");
-let reset_btn = document.getElementById("reset");
-let scoreTeller = document.getElementById("score");
-let preLoader = document.querySelector(".pre-loader");
+let cards_container = document.querySelector(".cards-container"),
+  score_plus_one = document.getElementById("score-plus-one"),
+  reset_btn = document.getElementById("reset"),
+  scoreTeller = document.getElementById("score"),
+  preLoader = document.querySelector(".pre-loader"),
+  minsElem = document.querySelector("#mins"),
+  secsElem = document.querySelector("#secs");
+
+// Timer IIFE - Starting
+function CountDownTimer(){
+  timer = setInterval(() => {
+    mins > 0 ? mins-- : "";
+    minsElem.innerText = `0${mins}`
+    if(secs > 10){
+      secs--;
+      secsElem.innerText = secs;
+    } else if(secs <= 10 && secs > 0){
+      secs--;
+      secsElem.innerText = `0${secs}`;
+    } else if(secs == 0){
+      GameLost();
+    }
+  }, 1000);
+}
+
+CountDownTimer();
 
 // Fetch Data Using async/await
 const FetchingData = async () => {
@@ -89,7 +113,7 @@ function CardMatchChecker(cardEmoji) {
         });
         ScoreAnimation();
         score++;
-        if(score == 10){
+        if (score == 10) {
           GameWon();
         }
         scoreTeller.innerText = score;
@@ -118,17 +142,42 @@ const ScoreAnimation = () => {
 
 // Game Won
 const GameWon = () => {
+  clearInterval(timer);
   Swal.fire({
     title: 'Hurrah! You Won',
     icon: 'success',
     iconColor: '#008674',
     confirmButtonText: 'Reset',
     confirmButtonColor: '#03111B',
-  }).then(GameReset());
+  }).then((result) => {
+    if(result.isConfirmed){
+      GameReset();
+    };
+  });
+}
+
+// Game Lost
+const GameLost = () => {
+  clearInterval(timer);
+  Swal.fire({
+    title: 'Oops! You Lost',
+    icon: 'error',
+    iconColor: '#fa0740',
+    confirmButtonText: 'Reset',
+    confirmButtonColor: '#03111B',
+  }).then((result) => {
+    if(result.isConfirmed){
+      GameReset();
+    };
+  });
 }
 
 // Game Reset
 const GameReset = () => {
+  clearInterval(timer);
+  mins = 1,
+  secs = 60,
+  CountDownTimer();
   cards_data = [];
   cards_container.innerHTML = "";
   score = 0;

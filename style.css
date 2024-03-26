@@ -79,6 +79,11 @@ body{
     margin-bottom: -1px;
 }
 
+/* Timer */
+.timer{
+    margin-left: 10px;
+}
+
 /* Cards Container */
 .cards-container{
     background: rgba(198, 191, 191, 0.176);
