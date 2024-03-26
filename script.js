@@ -9,6 +9,7 @@ let cards_container = document.querySelector(".cards-container");
 let score_plus_one = document.getElementById("score-plus-one");
 let reset_btn = document.getElementById("reset");
 let scoreTeller = document.getElementById("score");
+let preLoader = document.querySelector(".pre-loader");
 
 // Fetch Data Using async/await
 const FetchingData = async () => {
@@ -141,5 +142,5 @@ reset_btn.addEventListener("click", GameReset);
 
 // Loader
 window.addEventListener("load", () => {
-
+  preLoader.classList.add("pre-loader-hidden");
 })
