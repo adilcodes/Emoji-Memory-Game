@@ -32,7 +32,7 @@ body{
 }
 .pre-loader-hidden{
     opacity: 0;
-    visibility: 0;
+    visibility: hidden;
 }
 .pre-loader::after{
     content: "";
